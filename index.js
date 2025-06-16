@@ -318,6 +318,14 @@ async function pingOtherServers() {
     }
   }
 }
+// Start ping cycle
+setTimeout(() => {
+  console.log('Starting regular ping cycle');
+  // Initial ping
+  pingOtherServers();
+  // Then ping every 14 minutes
+  setInterval(pingOtherServers, 780000); // 14 minutes
+}, 30000); // Wait 30 seconds after startup
 
 // Start server
 app.listen(PORT, () => {
